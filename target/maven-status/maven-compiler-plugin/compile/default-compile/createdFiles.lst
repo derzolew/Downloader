@@ -1,4 +1,5 @@
 com\maxvi\DownloaderFacade.class
 com\maxvi\Main.class
 com\maxvi\ArgsUtil.class
+com\maxvi\FileUtil.class
 com\maxvi\Constants.class

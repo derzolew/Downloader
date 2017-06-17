@@ -11,9 +11,7 @@ public class ArgsUtil {
         final Map<String, List<String>> argsMap = new HashMap<>();
         List<String> argValues = null;
         for (final String arg : args) {
-            if ((arg.equals(Constants.ARG_LINK) ||
-                    arg.equals(Constants.ARG_PATH) ||
-                    arg.equals(Constants.ARG_FILE_NAME))) {
+            if (checkProperArg(arg, argsMap)) {
                 argValues = new ArrayList<>();
                 argsMap.put(arg, argValues);
             } else {
@@ -24,6 +22,13 @@ public class ArgsUtil {
 
         }
         return argsMap;
+    }
+
+    private boolean checkProperArg(final String pArg, final Map<String, List<String>> pArgsMap) {
+        return (pArg.equals(Constants.ARG_LINK) ||
+                pArg.equals(Constants.ARG_PATH) ||
+                pArg.equals(Constants.ARG_FILE) ||
+                pArg.equals(Constants.ARG_FILE_NAME)) && !pArgsMap.containsKey(pArg);
     }
 
 }
