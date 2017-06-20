@@ -1,4 +1,6 @@
-package com.maxvi;
+package com.maxvi.utilities;
+
+import com.maxvi.Constants;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,5 +1,13 @@
+com\maxvi\parsers\ParserFactory.class
+com\maxvi\utilities\FileUtil.class
 com\maxvi\DownloaderFacade.class
-com\maxvi\Main.class
-com\maxvi\ArgsUtil.class
-com\maxvi\FileUtil.class
+com\maxvi\parsers\IParsable.class
 com\maxvi\Constants.class
+com\maxvi\models\DownloadObjectArray.class
+com\maxvi\parsers\CsvParser.class
+com\maxvi\utilities\ArgsUtil.class
+com\maxvi\models\DownloadObject.class
+com\maxvi\Main.class
+com\maxvi\parsers\XmlParser.class
+com\maxvi\ThreadManager.class
+com\maxvi\parsers\JsonParser.class

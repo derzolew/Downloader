@@ -7,6 +7,10 @@ public final class Constants {
     public static final String ARG_FILE = "-f";
     public static final String ARG_FILE_NAME = "-n";
 
+    public static final String FILE_EXT_JSON = "json";
+    public static final String FILE_EXT_XML = "xml";
+    public static final String FILE_EXT_CSV = "csv";
+
     private static final String ERROR_MSG = "ERROR: ";
     public static final String ERROR_URL = ERROR_MSG + "URL format";
     public static final String ERROR_IO = ERROR_MSG + "Can't download";
