@@ -28,6 +28,7 @@ public final class ArgsUtil {
     private static boolean checkProperArg(final String pArg, final Map<String, List<String>> pArgsMap) {
         return (pArg.equals(Constants.ARG_LINK) ||
                 pArg.equals(Constants.ARG_PATH) ||
+                pArg.equals(Constants.ARG_THREADS) ||
                 pArg.equals(Constants.ARG_FILE) ||
                 pArg.equals(Constants.ARG_FILE_NAME)) && !pArgsMap.containsKey(pArg);
     }

@@ -5,9 +5,10 @@ X:\Projects\git\Downloader\src\main\java\com\maxvi\parsers\XmlParser.java
 X:\Projects\git\Downloader\src\main\java\com\maxvi\models\DownloadObjectArray.java
 X:\Projects\git\Downloader\src\main\java\com\maxvi\parsers\JsonParser.java
 X:\Projects\git\Downloader\src\main\java\com\maxvi\parsers\ParserFactory.java
-X:\Projects\git\Downloader\src\main\java\com\maxvi\ThreadManager.java
 X:\Projects\git\Downloader\src\main\java\com\maxvi\utilities\FileUtil.java
 X:\Projects\git\Downloader\src\main\java\com\maxvi\utilities\ArgsUtil.java
 X:\Projects\git\Downloader\src\main\java\com\maxvi\models\DownloadObject.java
-X:\Projects\git\Downloader\src\main\java\com\maxvi\DownloaderFacade.java
+X:\Projects\git\Downloader\src\main\java\com\maxvi\downloader\ThreadManager.java
+X:\Projects\git\Downloader\src\main\java\com\maxvi\ConsoleWriter.java
+X:\Projects\git\Downloader\src\main\java\com\maxvi\downloader\DownloaderFacade.java
 X:\Projects\git\Downloader\src\main\java\com\maxvi\parsers\IParsable.java
