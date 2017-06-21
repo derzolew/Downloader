@@ -23,6 +23,5 @@ public class Main {
         } catch (FileNotFoundException pE) {
             pE.printStackTrace();
         }
-        System.out.println("test change");
     }
 }
