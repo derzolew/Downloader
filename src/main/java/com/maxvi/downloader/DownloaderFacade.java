@@ -49,11 +49,15 @@ public class DownloaderFacade {
                     mWriter.write(Constants.ERROR_ARGS_NOT_SPECIFIED + Constants.ARG_THREADS);
                 }
             } else {
-
+                final byte numOfThreads = 1;
+                mThreadManager = new ThreadManager(numOfThreads);
+                downloadFromFile();
             }
 
         } else if (ArgsUtil.checkIfFromLink(mArgsMap)) {
             downloadFromLink();
+        } else {
+            mWriter.write(Constants.ERROR_ARGS);
         }
     }
 
@@ -64,16 +68,18 @@ public class DownloaderFacade {
             mParser = ParserFactory.getParser(fileExtension);
             if (mParser != null) {
                 final DownloadObjectArray downloadObjectArray = mParser.parseFile(filePath);
-
-                mThreadManager.divideDownloadsByThreads(downloadObjectArray);
-
-            /*final String path = mArgsMap.get(Constants.ARG_PATH).get(0);
-            for (final DownloadObject downloadObject : downloadObjectArray.getLinksArray()) {
-                mWriter.write(download(downloadObject.getUrl(), path, downloadObject.getName()));
-            }*/
+                if (downloadObjectArray != null) {
+                    mThreadManager.divideDownloadsByThreads(downloadObjectArray);
+                } else {
+                    mWriter.write(Constants.ERROR_PARSING);
+                }
+            } else {
+                mWriter.write(Constants.ERROR_ARGS + Constants.ARG_FILE);
             }
         } catch (final IndexOutOfBoundsException pE) {
             mWriter.write(Constants.ERROR_ARGS_NOT_SPECIFIED + Constants.ARG_FILE);
+        } catch (final IOException pE) {
+            mWriter.write(Constants.ERROR_ARGS);
         }
     }
 
@@ -89,10 +95,16 @@ public class DownloaderFacade {
     static String download(final String pLink, final String pName) {
         try {
             final URL url = new URL(pLink);
-            final Path path = new File(mArgsMap.get(Constants.ARG_PATH).get(0) + "\\" + pName).toPath();
+            final File file = new File(mArgsMap.get(Constants.ARG_PATH).get(0));
+            if (!file.exists()) {
+                file.mkdirs();
+            }
+            final Path path = new File(file + File.separator + pName).toPath();
             Files.copy(url.openStream(), path, StandardCopyOption.REPLACE_EXISTING);
         } catch (final MalformedURLException pE) {
             return Constants.ERROR_URL + pLink;
+        } catch (SecurityException pE) {
+            return Constants.ERROR_SECURITY;
         } catch (final IOException pE) {
             return Constants.ERROR_IO + pLink;
         } catch (final IndexOutOfBoundsException pE) {

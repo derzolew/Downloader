@@ -1,9 +1,11 @@
 package com.maxvi;
 
 public final class ConsoleWriter {
+
     private static ConsoleWriter mInstance;
 
-    private ConsoleWriter() {}
+    private ConsoleWriter() {
+    }
 
     public static synchronized ConsoleWriter getInstance() {
         if (mInstance == null) {

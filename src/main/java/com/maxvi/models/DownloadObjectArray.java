@@ -4,13 +4,11 @@ public class DownloadObjectArray {
 
     private DownloadObject[] linksArray;
 
-    public DownloadObject[] getLinksArray ()
-    {
+    public DownloadObject[] getLinksArray() {
         return linksArray;
     }
 
-    public void setLinksArray (DownloadObject[] linksArray)
-    {
+    public void setLinksArray(final DownloadObject[] linksArray) {
         this.linksArray = linksArray;
     }
 }

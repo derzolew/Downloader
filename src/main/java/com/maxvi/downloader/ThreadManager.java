@@ -53,7 +53,7 @@ public class ThreadManager {
                                    final int pEndIndex) {
         final DownloadObject[] downloadObjects = pDownloadObjectArray.getLinksArray();
         for (int i = pBeginIndex; i < pEndIndex; i++) {
-            mWriter.write(pBeginIndex + " " + DownloaderFacade.download(downloadObjects[i].getUrl(),
+            mWriter.write(DownloaderFacade.download(downloadObjects[i].getUrl(),
                     downloadObjects[i].getName()));
         }
     }

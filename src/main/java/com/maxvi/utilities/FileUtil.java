@@ -7,12 +7,16 @@ import java.nio.file.Paths;
 
 public final class FileUtil {
 
-    public static String readAllFile(final String filename, final Charset pCharset) throws IOException {
-        final byte[] encoded = Files.readAllBytes(Paths.get(filename));
-        return new String(encoded, pCharset);
+    public static String readAllFile(final String filename, final Charset pCharset) {
+        try {
+            final byte[] encoded = Files.readAllBytes(Paths.get(filename));
+            return new String(encoded, pCharset);
+        } catch (final IOException pE) {
+            return null;
+        }
     }
 
-    public static String getFileExtension(final String fileName) {
+    public static String getFileExtension(final String fileName) throws IOException {
         String extension = "";
 
         final int dotLastIndex = fileName.lastIndexOf('.');
