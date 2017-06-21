@@ -1,11 +1,11 @@
-package com.maxvi;
+package com.maxvi.core;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ColumnSearcher {
 
-    private List<Integer> mColumnsNums;
+    private final List<Integer> mColumnsNums;
 
     public ColumnSearcher() {
         mColumnsNums = new ArrayList<>();
