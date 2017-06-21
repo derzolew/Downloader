@@ -23,6 +23,19 @@ public class CsvParser implements IParsable {
         } catch (final IOException pE) {
             pE.printStackTrace();
         }
-        return lineList;
+        if (checkIfAllLinesEqual(lineList)) {
+            return lineList;
+        }
+        return null;
+    }
+
+    private boolean checkIfAllLinesEqual(final List<String[]> pLineList) {
+        boolean flag = true;
+        for (final String[] line : pLineList) {
+            if (line.length != pLineList.get(0).length) {
+                flag = false;
+            }
+        }
+        return flag;
     }
 }
