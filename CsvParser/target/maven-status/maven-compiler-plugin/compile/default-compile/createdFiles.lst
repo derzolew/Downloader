@@ -1,0 +1,6 @@
+com\maxvi\parsers\CsvParser.class
+com\maxvi\utilities\ArgsUtil.class
+com\maxvi\Main.class
+com\maxvi\parsers\IParsable.class
+com\maxvi\ColumnSearcher.class
+com\maxvi\Constants.class
