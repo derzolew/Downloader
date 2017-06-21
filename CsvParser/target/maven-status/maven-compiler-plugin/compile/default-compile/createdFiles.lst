@@ -1,9 +1,13 @@
+com\maxvi\utilities\FileUtil.class
+com\maxvi\parsers\IParsable.class
+com\maxvi\writers\CsvWriter.class
+com\maxvi\Constants.class
+com\maxvi\writers\IWritable.class
 com\maxvi\parsers\CsvParser.class
 com\maxvi\utilities\ArgsUtil.class
-com\maxvi\utilities\FileUtil.class
 com\maxvi\core\CsvFacade.class
 com\maxvi\core\OutputDataProvider.class
+com\maxvi\writers\WriterFactory.class
 com\maxvi\Main.class
-com\maxvi\parsers\IParsable.class
 com\maxvi\core\ColumnSearcher.class
-com\maxvi\Constants.class
+com\maxvi\writers\TxtWriter.class
