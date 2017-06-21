@@ -2,10 +2,10 @@ package com.maxvi;
 
 import com.maxvi.core.CsvFacade;
 
-public class Main {
+public final class Main {
 
     public static void main(final String[] args) {
-        CsvFacade facade = new CsvFacade(args);
+        final CsvFacade facade = new CsvFacade(args);
         facade.getResult();
     }
 }

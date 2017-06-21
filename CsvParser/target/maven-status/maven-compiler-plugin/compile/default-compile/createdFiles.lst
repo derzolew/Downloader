@@ -1,4 +1,5 @@
 com\maxvi\utilities\FileUtil.class
+com\maxvi\ConsoleWriter.class
 com\maxvi\parsers\IParsable.class
 com\maxvi\writers\CsvWriter.class
 com\maxvi\Constants.class

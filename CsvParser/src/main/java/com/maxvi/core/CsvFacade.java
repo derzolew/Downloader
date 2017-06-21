@@ -1,5 +1,6 @@
 package com.maxvi.core;
 
+import com.maxvi.ConsoleWriter;
 import com.maxvi.Constants;
 import com.maxvi.parsers.CsvParser;
 import com.maxvi.parsers.IParsable;
@@ -9,7 +10,6 @@ import com.maxvi.writers.IWritable;
 import com.maxvi.writers.WriterFactory;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -20,9 +20,11 @@ public class CsvFacade {
     private IParsable mParser;
     private IWritable mFileWriter;
     private Map<String, List<String>> mArgs;
+    private ConsoleWriter mConsoleWriter;
 
     public CsvFacade(final String[] args) {
         makeArgs(args);
+        mConsoleWriter = ConsoleWriter.getInstance();
     }
 
     private void makeArgs(final String[] args) {
@@ -32,19 +34,18 @@ public class CsvFacade {
     public void getResult() {
         try {
             final String filePath = mArgs.get(Constants.ARG_SOURCE).get(0);
-            List<String[]> linesToOutput = getLinesToOutput(filePath);
-            for (String[] line : linesToOutput) {
-                System.out.println(Arrays.toString(line));
-            }
-            String outputPath = mArgs.get(Constants.ARG_OUTPUT).get(0);
+            final List<String[]> linesToOutput = getLinesToOutput(filePath);
+
+            final String outputPath = mArgs.get(Constants.ARG_OUTPUT).get(0);
             mFileWriter = WriterFactory.getWriter(FileUtil.getFileExtension(outputPath));
-            mFileWriter.write(linesToOutput, outputPath);
-        } catch (final IndexOutOfBoundsException pE) {
-            System.out.println("index out of bound");
-        } catch (final IOException pE) {
-            System.out.println("IO exception");
-        } catch (final NullPointerException pE) {
-            System.out.println("Check args");
+            if (mFileWriter != null) {
+                mFileWriter.write(linesToOutput, outputPath);
+                mConsoleWriter.write(Constants.SUCCESS_MESSAGE);
+            } else {
+                mConsoleWriter.write(Constants.ERR_FILE_TYPE);
+            }
+        } catch (final IndexOutOfBoundsException | NullPointerException | IOException pE) {
+            mConsoleWriter.write(Constants.ERR_COMMON);
         }
     }
 
@@ -59,9 +60,11 @@ public class CsvFacade {
                 mOutputDataProvider = new OutputDataProvider();
                 mOutputDataProvider.makeOutputList(rawLineList, mColumnSearcher.getColumnsNums());
                 return mOutputDataProvider.getOutputList();
+            } else {
+                mConsoleWriter.write(Constants.ERR_LINES_CSV);
             }
         } else {
-            System.out.println("Format has to be csv");
+            mConsoleWriter.write(Constants.ERR_NOT_CSV);
         }
         return null;
     }
